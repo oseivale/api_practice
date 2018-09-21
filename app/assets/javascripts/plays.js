@@ -15,7 +15,7 @@ image.forEach(function(image){
     $.ajax({
       url: '/plays/image', //end point of your api call, which will then route you to the controller and its corresponding method
       method: 'POST', //post request to server
-      data: {image_url: img.src}, // data you are giving to the server
+      data: {image_url: img.src}, // data you are getting back from the server, this will be put into the params hash under the image_url key
       dataType: 'html' //the data type that you want for the response
 
     })

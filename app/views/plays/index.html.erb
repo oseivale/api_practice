@@ -2,10 +2,12 @@
 
 
 
-<% @image.each do |image| %>
+
 <div class="bg-link">
+  <% @images['results'].each do |image| %>
   <p>
-    <%= link_to 'background', image['urls']['full'] %>
+    <%= link_to 'background image', image['urls']['thumb'] %>
+
   </p>
+  <% end %>
 </div>
-<% end %>
