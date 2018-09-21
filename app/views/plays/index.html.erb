@@ -1,0 +1,11 @@
+<h1>Set your image!</h1>
+
+
+
+<% @image.each do |image| %>
+<div class="bg-link">
+  <p>
+    <%= link_to 'background', image['urls']['full'] %>
+  </p>
+</div>
+<% end %>
