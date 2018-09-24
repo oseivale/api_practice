@@ -2,11 +2,10 @@ class PlaysController < ApplicationController
 skip_before_action :verify_authenticity_token
 
   def index
-    @fake_post = "was a sunshine day!"
+    @fake_post = ["Blue", "Cars", "Mountain", "Sunshine"]
     @play = Play.new
-    @images = unsplash_response
-    puts @images
     @plays = Play.all
+    @images = unsplash_response
 
 
     respond_to do |format|
@@ -28,8 +27,8 @@ skip_before_action :verify_authenticity_token
 
   def create
     @play = Play.new
-    @play.image_name = params[:play][:image_name]
-    @play.image_url = params[:play][:image_url]
+    @play.image_name = params[:plays][:image_name]
+    @play.image_url = params[:plays][:image_url]
 
     if @play.save
       if request.xhr?
@@ -48,21 +47,20 @@ skip_before_action :verify_authenticity_token
   def image_saved
     @play = Play.new
 
-      @play.image_url = params[:image_url]
+
       @play.save
       render json: @play
     end
 
   def unsplash_response
-    longest_word = @fake_post.split.max_by{|word| word.length}
-    puts"////////////////////////#{ENV["SPLASH_KEY"]}"
-    response = HTTParty.get("https://api.unsplash.com/search/photos?page=1&query=#{longest_word}&client_id=#{ENV["SPLASH_KEY"]}")
 
-    response_json = JSON.parse(response.body)
+    response = HTTParty.get("https://api.unsplash.com/photos/random?per_page=10&query=#{@fake_post.sample}&client_id=e94ba2672cfb2865cd80ff61f24b85c7354cd8d40f78b6969478d81e0ccde323&count=10")
 
+    @response_json = JSON.parse(response.body)
 
+  end
 
-
+  def image(response)
 
   end
 

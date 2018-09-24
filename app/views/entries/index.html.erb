@@ -1,0 +1,23 @@
+<h2>Have a look at all your Entries!</h2>
+
+<%= link_to 'Back to New Entries', new_entry_path %>
+
+<%= link_to 'View Backgrounds', plays_path %>
+
+
+
+
+
+<% @entries.each do |entry| %>
+  <h4>
+    <%= entry.title %>
+  </h4>
+  <p>
+    <%= entry.content %>
+  </p>
+
+
+
+
+
+<% end %>

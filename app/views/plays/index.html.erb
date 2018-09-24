@@ -1,13 +1,10 @@
-<h1>Set your image!</h1>
+<h1>Welcome</h1>
 
+<p><%= link_to 'Back to All Entries', entries_path %></p>
 
-
-
+<% @images.each do |image| %>
 <div class="bg-link">
-  <% @images['results'].each do |image| %>
-  <p>
-    <%= link_to 'background image', image['urls']['thumb'] %>
+<%= link_to "Background", image["urls"]["full"] %>
+   <% end %>
 
-  </p>
-  <% end %>
 </div>
