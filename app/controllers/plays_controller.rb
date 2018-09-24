@@ -54,7 +54,7 @@ skip_before_action :verify_authenticity_token
 
   def unsplash_response
 
-    response = HTTParty.get("https://api.unsplash.com/photos/random?per_page=10&query=#{@fake_post.sample}&client_id=e94ba2672cfb2865cd80ff61f24b85c7354cd8d40f78b6969478d81e0ccde323&count=10")
+    response = HTTParty.get("https://api.unsplash.com/photos/random?per_page=10&query=#{@fake_post.sample}&client_id=[ABC]&count=10")
 
     @response_json = JSON.parse(response.body)
 
